@@ -13,6 +13,7 @@ class PantallaInicial(QMainWindow):
         uic.loadUi(r'GUI\Resources\UI\Pantalla_funaerolinea.ui', self)
         self.central = self.findChild(QWidget, 'centralwidget')
         self.menu = self.central.findChild(QWidget, 'widget')
+        self.main = self.central.findChild(QWidget, "widget_main")
         self.btn_home = self.menu.findChild(QPushButton, 'home')
         self.btn_reservas = self.menu.findChild(QPushButton, 'reservas')
         self.btn_pagos = self.menu.findChild(QPushButton, 'pagos')
@@ -52,6 +53,8 @@ class PantallaInicial(QMainWindow):
         self.btn_pagos.setEnabled(True)
         self.btn_aviones.setEnabled(False)
         self.btn_reportes.setEnabled(True)
+        uic.loadUi(r'GUI\Resources\UI\Aviones.ui', self.main)
+        
 
     def reportesa(self):
         self.btn_home.setEnabled(True)
