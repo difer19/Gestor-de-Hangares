@@ -10,55 +10,55 @@ class PantallaInicial(QMainWindow):
         self.iniciarGui()
     
     def iniciarGui(self):
-        uic.loadUi(r'GUI\Resources\UI\Pantalla_administradorHangares.ui', self)
+        uic.loadUi(r'GUI\Resources\UI\Pantalla_funaerolinea.ui', self)
         self.central = self.findChild(QWidget, 'centralwidget')
         self.menu = self.central.findChild(QWidget, 'widget')
         self.btn_home = self.menu.findChild(QPushButton, 'home')
         self.btn_reservas = self.menu.findChild(QPushButton, 'reservas')
-        self.btn_aerolineas = self.menu.findChild(QPushButton, 'aerolineas')
-        self.btn_hangares = self.menu.findChild(QPushButton, 'hangares')
-        self.btn_usuarios = self.menu.findChild(QPushButton, 'usuarios')
+        self.btn_pagos = self.menu.findChild(QPushButton, 'pagos')
+        self.btn_aviones = self.menu.findChild(QPushButton, 'aviones')
+        self.btn_reportes = self.menu.findChild(QPushButton, 'reportes')
         self.btn_home.clicked.connect(self.homea)
         self.btn_reservas.clicked.connect(self.reservasa)
-        self.btn_aerolineas.clicked.connect(self.aerolineasa)
-        self.btn_hangares.clicked.connect(self.hangaresa)
-        self.btn_usuarios.clicked.connect(self.usuariosa)
+        self.btn_pagos.clicked.connect(self.pagosa)
+        self.btn_aviones.clicked.connect(self.avionesa)
+        self.btn_reportes.clicked.connect(self.reportesa)
         self.show()
     
     def homea(self):
         self.btn_home.setEnabled(False)
         self.btn_reservas.setEnabled(True)
-        self.btn_aerolineas.setEnabled(True)
-        self.btn_hangares.setEnabled(True)
-        self.btn_usuarios.setEnabled(True)
+        self.btn_pagos.setEnabled(True)
+        self.btn_aviones.setEnabled(True)
+        self.btn_reportes.setEnabled(True)
     
     def reservasa(self):
         self.btn_home.setEnabled(True)
         self.btn_reservas.setEnabled(False)
-        self.btn_aerolineas.setEnabled(True)
-        self.btn_hangares.setEnabled(True)
-        self.btn_usuarios.setEnabled(True)
+        self.btn_pagos.setEnabled(True)
+        self.btn_aviones.setEnabled(True)
+        self.btn_reportes.setEnabled(True)
     
-    def aerolineasa(self):
+    def pagosa(self):
         self.btn_home.setEnabled(True)
         self.btn_reservas.setEnabled(True)
-        self.btn_aerolineas.setEnabled(False)
-        self.btn_hangares.setEnabled(True)
-        self.btn_usuarios.setEnabled(True)
+        self.btn_pagos.setEnabled(False)
+        self.btn_aviones.setEnabled(True)
+        self.btn_reportes.setEnabled(True)
     
-    def hangaresa(self):
+    def avionesa(self):
         self.btn_home.setEnabled(True)
         self.btn_reservas.setEnabled(True)
-        self.btn_aerolineas.setEnabled(True)
-        self.btn_hangares.setEnabled(False)
-        self.btn_usuarios.setEnabled(True)
+        self.btn_pagos.setEnabled(True)
+        self.btn_aviones.setEnabled(False)
+        self.btn_reportes.setEnabled(True)
 
-    def usuariosa(self):
+    def reportesa(self):
         self.btn_home.setEnabled(True)
         self.btn_reservas.setEnabled(True)
-        self.btn_aerolineas.setEnabled(True)
-        self.btn_hangares.setEnabled(True)
-        self.btn_usuarios.setEnabled(False)
+        self.btn_pagos.setEnabled(True)
+        self.btn_aviones.setEnabled(True)
+        self.btn_reportes.setEnabled(False)
 
 
 if __name__ == "__main__":

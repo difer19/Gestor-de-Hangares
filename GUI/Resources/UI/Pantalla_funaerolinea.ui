@@ -144,7 +144,7 @@ QPushButton:disabled
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="aerolineas">
+        <widget class="QPushButton" name="pagos">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -158,12 +158,12 @@ QPushButton:disabled
           </size>
          </property>
          <property name="text">
-          <string>Aerolineas</string>
+          <string>Pagos</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="hangares">
+        <widget class="QPushButton" name="aviones">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -177,12 +177,12 @@ QPushButton:disabled
           </size>
          </property>
          <property name="text">
-          <string>Hangares</string>
+          <string>Aviones</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="usuarios">
+        <widget class="QPushButton" name="reportes">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -196,7 +196,7 @@ QPushButton:disabled
           </size>
          </property>
          <property name="text">
-          <string>Usuarios</string>
+          <string>Reportes</string>
          </property>
         </widget>
        </item>
