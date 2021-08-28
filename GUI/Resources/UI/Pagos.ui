@@ -73,9 +73,6 @@ QPushButton:disabled
 </string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>0</number>
-      </property>
       <property name="leftMargin">
        <number>0</number>
       </property>
@@ -89,7 +86,7 @@ QPushButton:disabled
        <number>0</number>
       </property>
       <item>
-       <widget class="QPushButton" name="RegistrarAvion">
+       <widget class="QPushButton" name="RealizarPago">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -97,25 +94,12 @@ QPushButton:disabled
          </size>
         </property>
         <property name="text">
-         <string>Registrar/Eliminar Avion</string>
+         <string>Realizar Pago</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="DatosAvion">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Datos</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="ReporteAvion">
+       <widget class="QPushButton" name="ReportePagos">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -176,7 +160,6 @@ QLabel
     font: 12pt &quot;Bahnschrift&quot;;
 }</string>
      </property>
-     <widget class="QWidget" name="stackedWidgetPage1"/>
     </widget>
    </item>
   </layout>

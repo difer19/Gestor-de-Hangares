@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true">background-color: #6357B7;</string>
   </property>
   <layout class="QVBoxLayout">
    <property name="spacing">
@@ -37,6 +37,9 @@
    </property>
    <item>
     <widget class="QWidget" name="widget_2" native="true">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -89,7 +92,7 @@ QPushButton:disabled
        <number>0</number>
       </property>
       <item>
-       <widget class="QPushButton" name="RegistrarAvion">
+       <widget class="QPushButton" name="RegistrarAerolinea">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -97,12 +100,12 @@ QPushButton:disabled
          </size>
         </property>
         <property name="text">
-         <string>Registrar/Eliminar Avion</string>
+         <string>Registrar/Eliminar Aerolineas</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="DatosAvion">
+       <widget class="QPushButton" name="Datos">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -115,7 +118,7 @@ QPushButton:disabled
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="ReporteAvion">
+       <widget class="QPushButton" name="ReporteAerolinea">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -132,6 +135,9 @@ QPushButton:disabled
    </item>
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="styleSheet">
       <string notr="true">QWidget
 {
@@ -176,7 +182,6 @@ QLabel
     font: 12pt &quot;Bahnschrift&quot;;
 }</string>
      </property>
-     <widget class="QWidget" name="stackedWidgetPage1"/>
     </widget>
    </item>
   </layout>
