@@ -42,3 +42,11 @@ QLabel
     color: #6357B7;
     font: 12pt "Bahnschrift";
 }
+
+QComboBox
+{
+    border: 1px solid #6357B7;
+    border-radius: 3px;
+    padding: 1px 18px 1px 3px;
+    min-width: 6em;
+}

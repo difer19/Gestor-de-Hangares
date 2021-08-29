@@ -60,7 +60,7 @@ class PantallaInicial(QMainWindow):
         self.btn_home.setEnabled(True)
         self.btn_reservas.setEnabled(True)
         self.btn_pagos.setEnabled(True)
-        self.btn_aviones.setEnabled(False)
+        self.btn_aviones.setEnabled(False) 
         self.main.setCurrentIndex(3)
 
 if __name__ == "__main__":
