@@ -5,7 +5,7 @@ from reservas import Reservas
 from pagos import Pagos
 from aviones import Aviones
 
-class PantallaInicial(QMainWindow):
+class FunAerolinea(QMainWindow):
     def __init__(self):
         super().__init__()
         self.iniciarGui()
@@ -62,8 +62,3 @@ class PantallaInicial(QMainWindow):
         self.btn_pagos.setEnabled(True)
         self.btn_aviones.setEnabled(False) 
         self.main.setCurrentIndex(3)
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = PantallaInicial()
-    app.exec_()

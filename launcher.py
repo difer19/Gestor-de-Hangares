@@ -1,5 +1,6 @@
 from login import PantallaLogin
 from administrador import PantallaAdministrador
+from funAerolinea import FunAerolinea
 from PyQt5.QtWidgets import QApplication
 import sys
 
@@ -17,6 +18,11 @@ class Launcher:
     def iniciarAdministrador(self):
         app = QApplication(sys.argv)
         self.Administrador = PantallaAdministrador()
+        app.exec_()
+
+    def iniciarFunAerolinea(self):
+        app = QApplication(sys.argv)
+        self.funAero = FunAerolinea()
         app.exec_()
     
 

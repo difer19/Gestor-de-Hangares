@@ -176,7 +176,6 @@ QLabel
     font: 12pt &quot;Bahnschrift&quot;;
 }</string>
      </property>
-     <widget class="QWidget" name="stackedWidgetPage1"/>
     </widget>
    </item>
   </layout>
