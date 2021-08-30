@@ -1,8 +1,7 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QWidget
+from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
-import sys
-
 from PyQt5.uic.uiparser import QtWidgets
+from aerolineaRegister import AerolineaRegister
 
 class Aerolineas(QWidget):
     def __init__(self, parent = None):
@@ -15,6 +14,12 @@ class Aerolineas(QWidget):
         self.btn_RE = self.findChild(QPushButton, 'RegistrarAerolinea')
         self.btn_datos = self.findChild(QPushButton, 'Datos')
         self.btn_reporte = self.findChild(QPushButton, 'ReporteAerolinea')
+        self.main = self.findChild(QStackedWidget, 'stackedWidget')
+
+        self.AeroR = AerolineaRegister()
+        self.main.addWidget(QWidget())
+        self.main.addWidget(self.AeroR)
+
         self.btn_RE.clicked.connect(self.REb)
         self.btn_datos.clicked.connect(self.datosB)
         self.btn_reporte.clicked.connect(self.reporteB)
@@ -23,6 +28,7 @@ class Aerolineas(QWidget):
         self.btn_RE.setEnabled(False)
         self.btn_datos.setEnabled(True)
         self.btn_reporte.setEnabled(True)
+        self.main.setCurrentIndex(1)
 
     def datosB(self):
         self.btn_RE.setEnabled(True)

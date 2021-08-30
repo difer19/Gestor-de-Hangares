@@ -6,12 +6,11 @@ from aerolineas import Aerolineas
 from hangares import Hangares
 from usuarios import Usuarios
 
-class PantallaInicial(QMainWindow):
+class PantallaAdministrador(QMainWindow):
     def __init__(self):
         super().__init__()
         self.iniciarGui()
         
-    
     def iniciarGui(self):
         uic.loadUi(r'GUI\Resources\UI\Pantalla_administradorHangares.ui', self)
         self.central = self.findChild(QWidget, 'centralwidget')
@@ -80,8 +79,3 @@ class PantallaInicial(QMainWindow):
         self.btn_hangares.setEnabled(True)
         self.btn_usuarios.setEnabled(False)
         self.main.setCurrentIndex(4)
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = PantallaInicial()
-    app.exec_()
