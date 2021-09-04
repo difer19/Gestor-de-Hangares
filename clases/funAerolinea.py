@@ -1,9 +1,9 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QStackedWidget, QWidget
+from PyQt5.QtWidgets import QMainWindow, QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
-import sys
-from reservas import Reservas
-from pagos import Pagos
-from aviones import Aviones
+from clases.reservas import Reservas
+from clases.pagos import Pagos
+from clases.aviones import Aviones
+
 
 class FunAerolinea(QMainWindow):
     def __init__(self):

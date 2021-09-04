@@ -1,10 +1,10 @@
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QStackedWidget, QWidget
+from PyQt5.QtWidgets import QMainWindow, QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
-import sys
-from reservas import Reservas
-from aerolineas import Aerolineas
-from hangares import Hangares
-from usuarios import Usuarios
+from clases.aerolineas import Aerolineas
+from clases.hangares import Hangares
+from clases.usuarios import Usuarios
+from clases.reservas import Reservas
+
 
 class PantallaAdministrador(QMainWindow):
     def __init__(self):

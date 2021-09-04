@@ -62,7 +62,7 @@ QLabel
 QComboBox
 {
     border: 1px solid #6357B7;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 1px 18px 1px 3px;
     min-width: 10px;
 }</string>

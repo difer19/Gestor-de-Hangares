@@ -1,6 +1,6 @@
-from login import PantallaLogin
-from administrador import PantallaAdministrador
-from funAerolinea import FunAerolinea
+from clases.login import PantallaLogin
+from clases.administrador import PantallaAdministrador
+from clases.funAerolinea import FunAerolinea
 from PyQt5.QtWidgets import QApplication
 import sys
 

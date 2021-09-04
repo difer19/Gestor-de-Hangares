@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QWidget
 from PyQt5 import uic
-import sys
 from PyQt5.uic.uiparser import QtWidgets
 
 

@@ -1,7 +1,8 @@
 from PyQt5.QtWidgets import QPushButton, QWidget, QStackedWidget
 from PyQt5 import uic
 from PyQt5.uic.uiparser import QtWidgets
-from hangarRegister import HangarRegister
+from clases.hangarRegister import HangarRegister
+
 
 class Hangares(QWidget):
     def __init__(self, parent = None):

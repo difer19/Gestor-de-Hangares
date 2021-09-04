@@ -1,10 +1,8 @@
 from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
-import sys
-from userRegister import UserRegister 
-
-
+from clases.userRegister import UserRegister 
 from PyQt5.uic.uiparser import QtWidgets
+
 
 class Usuarios(QWidget):
     def __init__(self, parent = None):
