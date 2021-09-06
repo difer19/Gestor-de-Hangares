@@ -41,4 +41,3 @@ class Hangares(QWidget):
         self.btn_datos.setEnabled(True)
         self.btn_reporte.setEnabled(False)
     
-    

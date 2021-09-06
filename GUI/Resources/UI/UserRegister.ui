@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1033</width>
-    <height>547</height>
+    <width>1144</width>
+    <height>668</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -65,7 +65,9 @@ QComboBox
     border-radius: 15px;
     padding: 1px 18px 1px 3px;
     min-width: 10px;
-}</string>
+}
+
+</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
@@ -106,6 +108,23 @@ QComboBox
        </widget>
       </item>
       <item>
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Nombre de Usuario </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
          <string>Nombre</string>
@@ -139,6 +158,9 @@ QComboBox
         </property>
         <property name="styleSheet">
          <string notr="true">;</string>
+        </property>
+        <property name="insertPolicy">
+         <enum>QComboBox::InsertAtTop</enum>
         </property>
        </widget>
       </item>
@@ -206,6 +228,12 @@ QComboBox
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="label_6">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -226,7 +254,7 @@ QComboBox
       <item>
        <widget class="QTableWidget" name="tableWidget">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -234,7 +262,7 @@ QComboBox
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>68</height>
+          <height>422</height>
          </size>
         </property>
        </widget>

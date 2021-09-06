@@ -13,7 +13,7 @@ class Launcher:
         app = QApplication(sys.argv)
         self.Login = PantallaLogin()
         app.exec_()
-        return self.Login.lg
+        return self.Login.User
 
     def iniciarAdministrador(self):
         app = QApplication(sys.argv)
@@ -24,6 +24,5 @@ class Launcher:
         app = QApplication(sys.argv)
         self.funAero = FunAerolinea()
         app.exec_()
-    
 
-    
+            
