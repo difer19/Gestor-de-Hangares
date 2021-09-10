@@ -5,8 +5,9 @@ from clases.avionRegister import AvionRegister
 
 
 class Aviones(QWidget):
-    def __init__(self, parent = None):
+    def __init__(self, Aerolinea, parent = None):
         super(Aviones, self).__init__(parent)
+        self.Aerolinea = Aerolinea
         self.iniciarGui()
         self.show()
     
@@ -17,7 +18,7 @@ class Aviones(QWidget):
         self.btn_reporte = self.findChild(QPushButton, 'ReporteAvion')
         self.main = self.findChild(QStackedWidget, 'stackedWidget')
 
-        self.avionR = AvionRegister()
+        self.avionR = AvionRegister(self.Aerolinea)
         self.main.addWidget(QWidget())
         self.main.addWidget(self.avionR)
 

@@ -142,7 +142,7 @@ QComboBox
       <item>
        <widget class="QLineEdit" name="lineEdit_2">
         <property name="echoMode">
-         <enum>QLineEdit::Password</enum>
+         <enum>QLineEdit::Normal</enum>
         </property>
         <property name="clearButtonEnabled">
          <bool>true</bool>

@@ -20,9 +20,9 @@ class Launcher:
         self.Administrador = PantallaAdministrador()
         app.exec_()
 
-    def iniciarFunAerolinea(self):
+    def iniciarFunAerolinea(self, aerolinea):
         app = QApplication(sys.argv)
-        self.funAero = FunAerolinea()
+        self.funAero = FunAerolinea(aerolinea)
         app.exec_()
 
             

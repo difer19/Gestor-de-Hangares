@@ -6,10 +6,11 @@ from clases.aviones import Aviones
 
 
 class FunAerolinea(QMainWindow):
-    def __init__(self):
+    def __init__(self, aerolinea):
         super().__init__()
+        self.aerolinea = aerolinea
         self.iniciarGui()
-    
+
     def iniciarGui(self):
         uic.loadUi(r'GUI\Resources\UI\Pantalla_funaerolinea.ui', self)
         self.central = self.findChild(QWidget, 'centralwidget')
@@ -22,7 +23,7 @@ class FunAerolinea(QMainWindow):
         
         self.ReservasW = Reservas()
         self.PagosW = Pagos()
-        self.AvionesW = Aviones()
+        self.AvionesW = Aviones(self.aerolinea)
 
         self.main.addWidget(QWidget())
         self.main.addWidget(self.ReservasW)

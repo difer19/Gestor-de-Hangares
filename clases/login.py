@@ -52,7 +52,7 @@ class PantallaLogin(QMainWindow):
             resultado = afiliacion.fetchall()
             for af in resultado:
                 afiliacion = af
-            self.User = Usuario(userName, af, Password)
+            self.User = Usuario(userName, afiliacion, Password)
             self.status = True
             print("correcto")
             self.close()

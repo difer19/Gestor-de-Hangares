@@ -16,30 +16,39 @@ class UserRegister(QWidget):
         self.cb_afiliacion = self.findChild(QComboBox, 'comboBox')
         self.le_password = self.findChild(QLineEdit, 'lineEdit_2')
         self.btn_password = self.findChild(QPushButton, 'pushButton')
-        self.le_password2 = self.findChild(QPushButton, 'lineEdit_3')
+        self.le_password2 = self.findChild(QLineEdit, 'lineEdit_3')
         self.cargarCB()
 
         self.btn_password.clicked.connect(lambda: self.RegistrarUser())
     
     def cargarCB(self):
-        pass
+        self.cb_afiliacion.addItem("aeropuerto el campanero")
+        aerolineas = Conexion()
+        cursor = aerolineas.ejecutar_SQL("SELECT NombreAerolinea FROM Aerolineas")
+        for Aerolinea in cursor.fetchall():
+            self.cb_afiliacion.addItem(Aerolinea[0])
+        aerolineas.cerrar_conexion()
 
     def RegistrarUser(self):
-        self.userName = self.le_username.text()
-        self.name = self.le_name.text()
-        self.cb_afiliacion.currentText()
+        userName = self.le_username.text()
+        name = self.le_name.text().lower()
+        afiliacion = self.cb_afiliacion.currentText()
         self.passw = self.le_password.text()
         self.passw2 = self.le_password2.text()
         Conect = Conexion()
-        query = "SELECT username FROM users WHERE username = '%s'" %(self.userName)
+        query = "SELECT username FROM users WHERE username = '%s'" %(userName)
         result = Conect.numberResult(query)
         if result == 0 and self.passw == self.passw2:
-            # register = "INSERT INTO users (idusers, username, password, afiliacion, nombre) VALUES('%s','%s,'%s,'%s,'%s')"
-            # registro
-            pass
+            idUser = Conect.numberResult("SELECT * FROM users") + 1
+            register = "INSERT INTO users (idusers, username, password, afiliacion, nombre) VALUES ('%s','%s','%s','%s','%s')" %(idUser, userName, self.passw, afiliacion, name )
+            Conect.insertarDatos(register)
+            self.le_username.clear()
+            self.le_name.clear()
+            self.le_password.clear()
+            self.le_password2.clear()
         else:
             print("campos no coinciden o nombre de usuario ya esta en uso")
-        pass
+        Conect.cerrar_conexion()
 
     def RegistroUserDB(self):
         pass

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1100</width>
-    <height>582</height>
+    <width>1143</width>
+    <height>657</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -62,9 +62,9 @@ QLabel
 QComboBox
 {
     border: 1px solid #6357B7;
-    border-radius: 15px;
-    padding: 1px 18px 1px 3px;
-    min-width: 10px;
+    padding: 1px 30px 1px 3px;
+	color: #6357B7;
+    font: 12pt &quot;Bahnschrift&quot;;
 }
 
 </string>
@@ -152,7 +152,7 @@ QComboBox
        <widget class="QComboBox" name="comboBox">
         <property name="minimumSize">
          <size>
-          <width>33</width>
+          <width>0</width>
           <height>43</height>
          </size>
         </property>
