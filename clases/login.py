@@ -36,7 +36,7 @@ class PantallaLogin(QMainWindow):
         self.Login1.iniciarGui(self.w1)
         self.Login1.btn_login.clicked.connect(lambda: self.autentificacion())
         self.show()
-    
+     
     def autentificacion(self):
         userName = self.Login1.le_UserID.text()
         Password = self.Login1.le_Password.text()

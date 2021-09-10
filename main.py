@@ -7,3 +7,6 @@ if __name__ == "__main__":
         Launchers.iniciarAdministrador()
     else:
         Launchers.iniciarFunAerolinea()
+ 
+
+

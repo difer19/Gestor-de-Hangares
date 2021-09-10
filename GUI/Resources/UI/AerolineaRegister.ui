@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1033</width>
-    <height>547</height>
+    <width>1193</width>
+    <height>664</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -106,24 +106,19 @@ QComboBox
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>ID</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLabel" name="label_4">
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>43</height>
+          <height>20</height>
          </size>
         </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_4">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
         <property name="text">
          <string>Nombre</string>
         </property>
@@ -132,15 +127,12 @@ QComboBox
       <item>
        <widget class="QLineEdit" name="lineEdit_2">
         <property name="echoMode">
-         <enum>QLineEdit::Password</enum>
+         <enum>QLineEdit::Normal</enum>
         </property>
         <property name="clearButtonEnabled">
          <bool>true</bool>
         </property>
        </widget>
-      </item>
-      <item>
-       <widget class="QWidget" name="widget_3" native="true"/>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton">
@@ -155,18 +147,16 @@ QComboBox
         </property>
        </widget>
       </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QWidget" name="widget_2" native="true">
-     <property name="minimumSize">
-      <size>
-       <width>465</width>
-       <height>0</height>
-      </size>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QWidget" name="widget_2" native="true">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QLabel" name="label_6">
         <property name="minimumSize">

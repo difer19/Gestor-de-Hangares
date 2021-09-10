@@ -13,6 +13,10 @@ class Conexion:
         self.cursor.execute(sql)
         return self.cursor
     
+    def insertarDatos(self, sql):
+        self.cursor.execute(sql)
+        self.Conexion.commit()
+    
     def numberResult(self, sql):
         number = self.cursor.execute(sql)
         return number
