@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QComboBox, QLineEdit, QPushButton, QTextEdit, QWidget
+from PyQt5.QtWidgets import QComboBox, QLineEdit, QPushButton, QTableWidget, QTextEdit, QWidget, QTableWidgetItem
 from PyQt5 import uic
 from database.conexion import Conexion
 
@@ -22,10 +22,32 @@ class AvionRegister(QWidget):
         self.cb_tipo = self.findChild(QComboBox, 'comboBox')
         self.cb_tipoPr = self.findChild(QComboBox, 'comboBox_2')
         self.btn_AvionReg = self.findChild(QPushButton, 'pushButton')
+        self.tb_aviones = self.findChild(QTableWidget, 'tableWidget')
+        self.btn_AvionDel = self.findChild(QPushButton, 'pushButton_2')
 
+        self.cargarTable()
         self.CBUpdate()
 
         self.btn_AvionReg.clicked.connect(lambda: self.AvionRegM())
+        self.btn_AvionDel.clicked.connect(lambda: self.AvionDelM())
+    
+    def cargarTable(self):
+        avionCon = Conexion()
+        idA = avionCon.ejecutar_SQL("SELECT idAerolineas FROM Aerolineas WHERE NombreAerolinea = '%s'" %(self.Aerolinea))
+        idAerolinea = idA.fetchall()
+        idAs = int(idAerolinea[0][0])
+        query = "SELECT idAvion, modelo, tipo, capacidad FROM Aviones WHERE idAerolineas = '%s'" %(idAs)
+        aviones = avionCon.ejecutar_SQL(query)
+        numberA = avionCon.numberResult(query)
+        self.tb_aviones.setRowCount(numberA)
+        i = 0
+        for avion in aviones:
+            self.tb_aviones.setItem(i, 0, QTableWidgetItem(avion[0]))
+            self.tb_aviones.setItem(i, 1, QTableWidgetItem(avion[1]))
+            self.tb_aviones.setItem(i, 2, QTableWidgetItem(avion[2]))
+            self.tb_aviones.setItem(i, 3, QTableWidgetItem(str(avion[3])))
+            i += 1
+        avionCon.cerrar_conexion()
 
     def CBUpdate(self):
         self.cb_tipo.addItem("Pasajeros")
@@ -64,6 +86,18 @@ class AvionRegister(QWidget):
         else:
             print("ID ya esta en uso")
         AvionR.cerrar_conexion()
+        self.cargarTable()
+    
+    def AvionDelM(self):
+        idDel = self.tb_aviones.selectedIndexes()[0].data()
+        delA = Conexion()
+        status = delA.numberResult("SELECT * FROM Reservas WHERE idAvion = '%s'" %(idDel))
+        if status == 0:
+            delA.insertarDatos("DELETE FROM Aviones WHERE idAvion = '%s'" %(idDel))
+        else:
+            print("no se puede eliminar este avion")
+        delA.cerrar_conexion
+        self.cargarTable()
 
         
         

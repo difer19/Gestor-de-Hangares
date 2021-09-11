@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
+from PyQt5.QtWidgets import QComboBox, QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
 from clases.userRegister import UserRegister 
 from PyQt5.uic.uiparser import QtWidgets
@@ -25,18 +25,26 @@ class Usuarios(QWidget):
         self.btn_datos.clicked.connect(self.datosB)
         self.btn_reporte.clicked.connect(self.reporteB)
     
+    def reload(self):
+        self.main.widget(1).cb_afiliacion.clear()
+        self.main.widget(1).cargarCB()
+        self.main.widget(1).cargarTable()
+    
     def REb(self):
+        self.main.currentWidget().destroy()
         self.btn_RE.setEnabled(False)
         self.btn_datos.setEnabled(True)
         self.btn_reporte.setEnabled(True)
         self.main.setCurrentIndex(1)
         
     def datosB(self):
+        self.main.currentWidget().destroy()
         self.btn_RE.setEnabled(True)
         self.btn_datos.setEnabled(False)
         self.btn_reporte.setEnabled(True)
     
     def reporteB(self):
+        self.main.currentWidget().destroy()
         self.btn_RE.setEnabled(True)
         self.btn_datos.setEnabled(True)
         self.btn_reporte.setEnabled(False)

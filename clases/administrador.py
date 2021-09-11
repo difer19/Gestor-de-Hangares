@@ -63,7 +63,7 @@ class PantallaAdministrador(QMainWindow):
         self.btn_hangares.setEnabled(True)
         self.btn_usuarios.setEnabled(True)
         self.main.setCurrentIndex(2)
-    
+
     def hangaresa(self):
         self.btn_home.setEnabled(True)
         self.btn_reservas.setEnabled(True)
@@ -79,3 +79,4 @@ class PantallaAdministrador(QMainWindow):
         self.btn_hangares.setEnabled(True)
         self.btn_usuarios.setEnabled(False)
         self.main.setCurrentIndex(4)
+        self.main.widget(4).reload()

@@ -65,7 +65,14 @@ QComboBox
     border-radius: 5px;
     padding: 1px 18px 1px 3px;
     min-width: 10px;
-}</string>
+}
+
+QTableWidget
+{
+	color: #6357B7;
+    font: 12pt &quot;Bahnschrift&quot;;
+}
+</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
@@ -210,6 +217,35 @@ QComboBox
           <height>68</height>
          </size>
         </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <column>
+         <property name="text">
+          <string>ID Hangar</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Capacidad</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Ubicacion</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Estado</string>
+         </property>
+        </column>
        </widget>
       </item>
       <item>

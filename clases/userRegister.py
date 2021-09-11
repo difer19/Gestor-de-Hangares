@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QComboBox, QLineEdit, QPushButton, QWidget
+from PyQt5.QtWidgets import QComboBox, QLineEdit, QPushButton, QTableWidget, QTableWidgetItem, QWidget
 from PyQt5 import uic
 from database.conexion import Conexion 
 
@@ -10,6 +10,7 @@ class UserRegister(QWidget):
         self.show()
     
     def iniciarGui(self):
+        self.update()
         uic.loadUi(r'GUI\Resources\UI\UserRegister.ui', self)
         self.le_username = self.findChild(QLineEdit, 'lineEdit_4')
         self.le_name = self.findChild(QLineEdit, 'lineEdit')
@@ -17,10 +18,31 @@ class UserRegister(QWidget):
         self.le_password = self.findChild(QLineEdit, 'lineEdit_2')
         self.btn_password = self.findChild(QPushButton, 'pushButton')
         self.le_password2 = self.findChild(QLineEdit, 'lineEdit_3')
+        self.tb_users = self.findChild(QTableWidget, 'tableWidget')
+        self.btn_delUser = self.findChild(QPushButton, 'pushButton_2')
+
         self.cargarCB()
+        self.cargarTable()
 
         self.btn_password.clicked.connect(lambda: self.RegistrarUser())
+        self.btn_delUser.clicked.connect(lambda: self.DeleteUser())
+        
     
+    def cargarTable(self):
+        users = Conexion()
+        usuarios = users.ejecutar_SQL("SELECT idusers, username, nombre, afiliacion FROM users")
+        userNumber = users.numberResult("SELECT idusers, username, nombre, afiliacion FROM users")
+        self.tb_users.setRowCount(userNumber)
+        i = 0
+        for user in usuarios:
+            self.tb_users.setItem(i, 0, QTableWidgetItem(str(user[0])))
+            self.tb_users.setItem(i, 1, QTableWidgetItem(user[1]))
+            self.tb_users.setItem(i, 2, QTableWidgetItem(user[2]))
+            self.tb_users.setItem(i, 3, QTableWidgetItem(user[3]))
+            i += 1
+        users.cerrar_conexion()
+
+
     def cargarCB(self):
         self.cb_afiliacion.addItem("aeropuerto el campanero")
         aerolineas = Conexion()
@@ -30,6 +52,7 @@ class UserRegister(QWidget):
         aerolineas.cerrar_conexion()
 
     def RegistrarUser(self):
+        self.cargarCB()
         userName = self.le_username.text()
         name = self.le_name.text().lower()
         afiliacion = self.cb_afiliacion.currentText()
@@ -49,6 +72,11 @@ class UserRegister(QWidget):
         else:
             print("campos no coinciden o nombre de usuario ya esta en uso")
         Conect.cerrar_conexion()
+        self.cargarTable()
 
-    def RegistroUserDB(self):
-        pass
+    def DeleteUser(self):
+        idDel = self.tb_users.selectedIndexes()[0].data()
+        delU = Conexion()
+        delU.insertarDatos("DELETE FROM users WHERE idusers = '%s'" %(idDel))
+        self.cargarTable()
+        delU.cerrar_conexion()

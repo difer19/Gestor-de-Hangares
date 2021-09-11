@@ -26,17 +26,20 @@ class Aerolineas(QWidget):
         self.btn_reporte.clicked.connect(self.reporteB)
     
     def REb(self):
+        self.main.currentWidget().destroy()
         self.btn_RE.setEnabled(False)
         self.btn_datos.setEnabled(True)
         self.btn_reporte.setEnabled(True)
         self.main.setCurrentIndex(1)
 
     def datosB(self):
+        self.main.currentWidget().destroy()
         self.btn_RE.setEnabled(True)
         self.btn_datos.setEnabled(False)
         self.btn_reporte.setEnabled(True)
     
     def reporteB(self):
+        self.main.currentWidget().destroy()
         self.btn_RE.setEnabled(True)
         self.btn_datos.setEnabled(True)
         self.btn_reporte.setEnabled(False)
