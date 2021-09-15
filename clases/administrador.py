@@ -3,7 +3,8 @@ from PyQt5 import uic
 from clases.aerolineas import Aerolineas
 from clases.hangares import Hangares
 from clases.usuarios import Usuarios
-from clases.reservas import Reservas
+from clases.reservarh2 import ReservarHangar2
+
 
 
 class PantallaAdministrador(QMainWindow):
@@ -22,7 +23,7 @@ class PantallaAdministrador(QMainWindow):
         self.btn_hangares = self.menu.findChild(QPushButton, 'hangares')
         self.btn_usuarios = self.menu.findChild(QPushButton, 'usuarios')
 
-        self.ReservasW = Reservas()
+        self.ReservasW = ReservarHangar2()
         self.AerolineasW = Aerolineas()
         self.HangaresW = Hangares()
         self.UsuariosW = Usuarios()
@@ -55,6 +56,8 @@ class PantallaAdministrador(QMainWindow):
         self.btn_hangares.setEnabled(True)
         self.btn_usuarios.setEnabled(True)
         self.main.setCurrentIndex(1)
+        self.main.widget(1).cargarTable_hangares()
+        self.main.widget(1).cargarCB()
     
     def aerolineasa(self):
         self.btn_home.setEnabled(True)

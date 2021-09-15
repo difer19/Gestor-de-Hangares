@@ -1,11 +1,13 @@
-from PyQt5.QtWidgets import QPushButton, QWidget
+from clases.reservarh1 import ReservarHangar1
+from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
 from PyQt5.uic.uiparser import QtWidgets
 
 
 class Reservas(QWidget):
-    def __init__(self, parent = None):
+    def __init__(self, aerolinea, parent = None):
         super(Reservas, self).__init__(parent)
+        self.aerolinea = aerolinea
         self.iniciarGui()
         self.show()
     
@@ -14,6 +16,14 @@ class Reservas(QWidget):
         self.btn_Reserva = self.findChild(QPushButton, 'Reserva')
         self.btn_Reprogramar = self.findChild(QPushButton, 'Reprogramar')
         self.btn_reporte = self.findChild(QPushButton, 'ReporteReservas')
+        self.main = self.findChild(QStackedWidget, 'stackedWidget')
+
+        self.ReservarW = ReservarHangar1(self.aerolinea)
+
+        self.main.addWidget(QWidget())
+        self.main.addWidget(self.ReservarW)
+        self.main.addWidget(QWidget())
+        self.main.addWidget(QWidget())
         
         self.btn_Reserva.clicked.connect(self.ReservaB)
         self.btn_Reprogramar.clicked.connect(self.ReprogramarB)
@@ -23,13 +33,16 @@ class Reservas(QWidget):
         self.btn_Reserva.setEnabled(False)
         self.btn_Reprogramar.setEnabled(True)
         self.btn_reporte.setEnabled(True)
+        self.main.setCurrentIndex(1)
 
     def ReprogramarB(self):
         self.btn_Reserva.setEnabled(True)
         self.btn_Reprogramar.setEnabled(False)
         self.btn_reporte.setEnabled(True)
+        self.main.setCurrentIndex(2)
     
     def reporteB(self):
         self.btn_Reserva.setEnabled(True)
         self.btn_Reprogramar.setEnabled(True)
         self.btn_reporte.setEnabled(False)
+        self.main.setCurrentIndex(2)

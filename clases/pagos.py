@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QPushButton, QWidget
+from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
-from PyQt5.uic.uiparser import QtWidgets
+from clases.pagarRe import PagarRe
 
 
 class Pagos(QWidget):
@@ -13,13 +13,23 @@ class Pagos(QWidget):
         uic.loadUi(r'GUI\Resources\UI\Pagos.ui', self)
         self.btn_Pago = self.findChild(QPushButton, 'RealizarPago')
         self.btn_reporte = self.findChild(QPushButton, 'ReportePagos')
+        self.main = self.findChild(QStackedWidget, 'stackedWidget')
+
+        self.PagarW = PagarRe()
+
+        self.main.addWidget(QWidget())
+        self.main.addWidget(self.PagarW)
+        self.main.addWidget(QWidget())
+
         self.btn_Pago.clicked.connect(self.pagoB)
         self.btn_reporte.clicked.connect(self.reporteB)
 
     def pagoB(self):
         self.btn_Pago.setEnabled(False)
         self.btn_reporte.setEnabled(True)
+        self.main.setCurrentIndex(1)
     
     def reporteB(self):
         self.btn_Pago.setEnabled(True)
         self.btn_reporte.setEnabled(False)
+        self.main.setCurrentIndex(2)

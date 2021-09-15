@@ -21,7 +21,7 @@ class FunAerolinea(QMainWindow):
         self.btn_pagos = self.menu.findChild(QPushButton, 'pagos')
         self.btn_aviones = self.menu.findChild(QPushButton, 'aviones')
         
-        self.ReservasW = Reservas()
+        self.ReservasW = Reservas(self.aerolinea)
         self.PagosW = Pagos()
         self.AvionesW = Aviones(self.aerolinea)
 

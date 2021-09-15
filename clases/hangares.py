@@ -18,8 +18,11 @@ class Hangares(QWidget):
         self.main = self.findChild(QStackedWidget, 'stackedWidget')
         
         self.HangarR = HangarRegister()
+        
         self.main.addWidget(QWidget())
         self.main.addWidget(self.HangarR)
+        self.main.addWidget(QWidget())
+        self.main.addWidget(QWidget())
 
         self.btn_RE.clicked.connect(self.REb)
         self.btn_datos.clicked.connect(self.datosB)
@@ -37,10 +40,12 @@ class Hangares(QWidget):
         self.btn_RE.setEnabled(True)
         self.btn_datos.setEnabled(False)
         self.btn_reporte.setEnabled(True)
+        self.main.setCurrentIndex(2)
     
     def reporteB(self):
         self.main.currentWidget().destroy()
         self.btn_RE.setEnabled(True)
         self.btn_datos.setEnabled(True)
         self.btn_reporte.setEnabled(False)
+        self.main.setCurrentIndex(3)
     

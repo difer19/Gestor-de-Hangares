@@ -19,8 +19,11 @@ class Aviones(QWidget):
         self.main = self.findChild(QStackedWidget, 'stackedWidget')
 
         self.avionR = AvionRegister(self.Aerolinea)
+        
         self.main.addWidget(QWidget())
         self.main.addWidget(self.avionR)
+        self.main.addWidget(QWidget())
+        self.main.addWidget(QWidget())
 
         self.btn_RE.clicked.connect(self.REb)
         self.btn_datos.clicked.connect(self.datosB)
@@ -38,10 +41,12 @@ class Aviones(QWidget):
         self.btn_RE.setEnabled(True)
         self.btn_datos.setEnabled(False)
         self.btn_reporte.setEnabled(True)
+        self.main.setCurrentIndex(2)
     
     def reporteB(self):
         self.main.currentWidget().destroy()
         self.btn_RE.setEnabled(True)
         self.btn_datos.setEnabled(True)
         self.btn_reporte.setEnabled(False)
+        self.main.setCurrentIndex(3)
     
