@@ -22,7 +22,7 @@ class FunAerolinea(QMainWindow):
         self.btn_aviones = self.menu.findChild(QPushButton, 'aviones')
         
         self.ReservasW = Reservas(self.aerolinea)
-        self.PagosW = Pagos()
+        self.PagosW = Pagos(self.aerolinea)
         self.AvionesW = Aviones(self.aerolinea)
 
         self.main.addWidget(QWidget())
@@ -56,6 +56,7 @@ class FunAerolinea(QMainWindow):
         self.btn_pagos.setEnabled(False)
         self.btn_aviones.setEnabled(True)
         self.main.setCurrentIndex(2)
+        self.main.widget(2).update()
     
     def avionesa(self):
         self.btn_home.setEnabled(True)

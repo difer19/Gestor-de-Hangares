@@ -1,7 +1,7 @@
-from clases.aerolineas import Aerolineas
-from PyQt5.QtWidgets import QComboBox, QLineEdit, QPushButton, QTableWidget, QTableWidgetItem, QWidget
+from PyQt5.QtWidgets import QLineEdit, QPushButton, QTableWidget, QTableWidgetItem, QWidget
 from PyQt5 import uic
 from database.conexion import Conexion 
+from datetime import *
 
 
 class ReservarHangar1(QWidget):
@@ -16,10 +16,77 @@ class ReservarHangar1(QWidget):
         uic.loadUi(r'GUI\Resources\UI\ReservasRe.ui', self)
         self.tb_aviones = self.findChild(QTableWidget, 'tableWidget_2')
         self.tb_hangares = self.findChild(QTableWidget, 'tableWidget')
+        self.le_dayIn = self.findChild(QLineEdit, 'lineEdit_2')
+        self.le_MesIn = self.findChild(QLineEdit, 'lineEdit')
+        self.le_yearIn = self.findChild(QLineEdit, 'lineEdit_3')
+        self.le_dayFin = self.findChild(QLineEdit, 'lineEdit_4')
+        self.le_MesFin = self.findChild(QLineEdit, 'lineEdit_6')
+        self.le_yearFin = self.findChild(QLineEdit, 'lineEdit_5')
+        self.btn_reservar = self.findChild(QPushButton, 'pushButton')
 
         self.cargarTable_aviones()
         self.cargarTable_hangares()
+
+        self.btn_reservar.clicked.connect(lambda: self.reservarHa())
+
     
+    def reservarHa(self):
+        strIni = self.le_dayIn.text()+"/"+self.le_MesIn.text()+"/"+self.le_yearIn.text()
+        strFin = self.le_dayFin.text()+"/"+self.le_MesFin.text()+"/"+self.le_yearFin.text()
+        self.fechaInicial = datetime.strptime(strIni, '%d/%m/%Y')
+        self.fechaFinal = datetime.strptime(strFin, '%d/%m/%Y')
+        if self.fechaFinal > self.fechaInicial and self.fechaFinal > datetime.today() and self.fechaInicial > datetime.today():
+            print("intervalo correcto")
+            self.idAvion =  self.tb_aviones.selectedIndexes()[0].data()
+            Area =  self.tb_aviones.selectedIndexes()[2].data()
+            self.idHangar =  self.tb_hangares.selectedIndexes()[0].data()
+            Capacidad =  self.tb_hangares.selectedIndexes()[1].data()
+            if int(Capacidad) < int(Area):
+                print("El hangar no es adecuado para ese avion")
+            elif self.disponibilidadH() == True:
+                reservar = Conexion()
+                idReserva = reservar.numberResult("SELECT idReservas FROM Reservas") + 1
+                reserva = "INSERT INTO Reservas (idReservas, fecha_inicial, fecha_final, idAvion, idhangar) VALUES ('%s','%s','%s','%s','%s')" %(idReserva, strIni, strFin, self.idAvion, self.idHangar)
+                delta = self.fechaFinal - self.fechaInicial
+                valor_factura = int(Capacidad)*50000 + (delta.days)*80000
+                factura  = "INSERT INTO Facturas (idFacturas, Valor, fecha_pago, idReserva, Estado) VALUES ('%s','%s','%s','%s','%s');" %(idReserva, valor_factura, "Null", idReserva, "No Pagado")
+                reservar.insertarDatos(reserva)
+                reservar.insertarDatos(factura)
+                reservar.cerrar_conexion()
+                self.le_dayIn.clear()
+                self.le_MesIn.clear()
+                self.le_yearIn.clear()
+                self.le_dayFin.clear()
+                self.le_MesFin.clear()
+                self.le_yearFin.clear()
+            else:
+                print("No se puede hacer la reserva")
+        else:
+            print("fechas invalidas")
+        
+
+    
+    def disponibilidadH(self):
+        dispon = Conexion()
+        query = "SELECT fecha_inicial, fecha_final FROM Reservas WHERE idAvion = '%s' OR idhangar = '%s'" %(self.idAvion, self.idHangar)
+        if dispon.numberResult(query) == 0:
+            return True
+        else:
+            reservas = dispon.ejecutar_SQL(query).fetchall()
+            count = 0
+            for reserva in reservas:
+                initDate = datetime.strptime(str(reserva[0]), '%d/%m/%Y')
+                FinishDate = datetime.strptime(str(reserva[1]), '%d/%m/%Y')
+                if self.fechaInicial > initDate and self.fechaInicial < FinishDate:
+                    count += 1
+                elif self.fechaFinal > initDate and self.fechaFinal < FinishDate:
+                    count += 1
+            if count == 0:
+                return True
+            else:
+                dispon.cerrar_conexion()
+                return False
+  
     def cargarTable_aviones(self):
         avionCon = Conexion()
         idA = avionCon.ejecutar_SQL("SELECT idAerolineas FROM Aerolineas WHERE NombreAerolinea = '%s'" %(self.Aerolinea))
@@ -33,7 +100,7 @@ class ReservarHangar1(QWidget):
         for avion in aviones:
             self.tb_aviones.setItem(i, 0, QTableWidgetItem(avion[0]))
             self.tb_aviones.setItem(i, 1, QTableWidgetItem(avion[1]))
-            self.tb_aviones.setItem(i, 3, QTableWidgetItem(str(avion[2])))
+            self.tb_aviones.setItem(i, 2, QTableWidgetItem(str(avion[2])))
             i += 1
         avionCon.cerrar_conexion()
 

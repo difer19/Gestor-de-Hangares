@@ -4,8 +4,9 @@ from clases.pagarRe import PagarRe
 
 
 class Pagos(QWidget):
-    def __init__(self, parent = None):
+    def __init__(self, aerolinea, parent = None):
         super(Pagos, self).__init__(parent)
+        self.aerolinea = aerolinea
         self.iniciarGui()
         self.show()
 
@@ -15,7 +16,7 @@ class Pagos(QWidget):
         self.btn_reporte = self.findChild(QPushButton, 'ReportePagos')
         self.main = self.findChild(QStackedWidget, 'stackedWidget')
 
-        self.PagarW = PagarRe()
+        self.PagarW = PagarRe(self.aerolinea)
 
         self.main.addWidget(QWidget())
         self.main.addWidget(self.PagarW)
@@ -23,6 +24,9 @@ class Pagos(QWidget):
 
         self.btn_Pago.clicked.connect(self.pagoB)
         self.btn_reporte.clicked.connect(self.reporteB)
+    
+    def update(self):
+        self.main.widget(1).cargarTable()
 
     def pagoB(self):
         self.btn_Pago.setEnabled(False)

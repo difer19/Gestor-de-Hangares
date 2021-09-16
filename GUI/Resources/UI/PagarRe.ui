@@ -155,7 +155,7 @@ QTableWidget
         </property>
         <column>
          <property name="text">
-          <string>Id Reserva</string>
+          <string>Id Factura</string>
          </property>
         </column>
         <column>
@@ -166,11 +166,6 @@ QTableWidget
         <column>
          <property name="text">
           <string>Estado</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string/>
          </property>
         </column>
        </widget>
