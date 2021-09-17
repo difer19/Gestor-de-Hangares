@@ -32,7 +32,6 @@ class HangarRegister(QWidget):
             self.tb_hangares.setItem(i, 0, QTableWidgetItem(hangar[0]))
             self.tb_hangares.setItem(i, 1, QTableWidgetItem(str(hangar[1])))
             self.tb_hangares.setItem(i, 2, QTableWidgetItem(hangar[2]))
-            self.tb_hangares.setItem(i, 3, QTableWidgetItem(hangar[3]))
             i += 1
         hangarCon.cerrar_conexion()
 
@@ -43,7 +42,7 @@ class HangarRegister(QWidget):
         HangarR = Conexion()
         valid = HangarR.numberResult("SELECT idHangar FROM Hangares WHERE idHangar = '%s' or Ubicacion = '%s'" %(idHangar, Ubicacion)) 
         if valid == 0:
-            insert = "INSERT INTO Hangares (idHangar, Capacidad, Ubicacion, Estado) VALUES ('%s', '%s', '%s', '%s')" %(idHangar, Capacidad, Ubicacion, "Libre")
+            insert = "INSERT INTO Hangares (idHangar, Capacidad, Ubicacion) VALUES ('%s', '%s', '%s')" %(idHangar, Capacidad, Ubicacion)
             HangarR.insertarDatos(insert)
             self.le_idHangar.clear()
             self.le_Capacidad.clear()
@@ -55,12 +54,22 @@ class HangarRegister(QWidget):
     
     def EliminarHangar(self):
         idDel = self.tb_hangares.selectedIndexes()[0].data()
-        status = self.tb_hangares.selectedIndexes()[3].data()
-        if status == "Ocupado":
+        status = self.statusHangar(idDel)
+        if status == False:
             print("no se puede eliminar este hangar")
         else:
             delU = Conexion()
             delU.insertarDatos("DELETE FROM Hangares WHERE idHangar = '%s'" %(idDel))
             delU.cerrar_conexion
         self.cargarTable()
+    
+    def statusHangar(self, idHangar):
+        stat = Conexion()
+        query = "SELECT * FROM Reservas WHERE idhangar = '%s'" %(idHangar)
+        numberH = stat.numberResult(query)
+        stat.cerrar_conexion()
+        if numberH == 0:
+            return True
+        else:
+            return False 
         

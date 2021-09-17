@@ -241,11 +241,6 @@ QTableWidget
           <string>Ubicacion</string>
          </property>
         </column>
-        <column>
-         <property name="text">
-          <string>Estado</string>
-         </property>
-        </column>
        </widget>
       </item>
       <item>
