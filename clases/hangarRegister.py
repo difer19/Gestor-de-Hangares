@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QLineEdit, QPushButton, QTableWidget, QWidget, QTableWidgetItem
 from PyQt5 import uic
 from database.conexion import Conexion
-
+from clases.dialog import *
 
 class HangarRegister(QWidget):
     def __init__(self, parent = None):
@@ -36,7 +36,10 @@ class HangarRegister(QWidget):
         hangarCon.cerrar_conexion()
 
     def RegistrarHangar(self):
-        idHangar = self.le_idHangar.text()
+        if self.validacion() == False:
+            Dialog("Campos Vacios")
+            return False
+        idHangar = self.le_idHangar.text().strip()
         Capacidad = int(self.le_Capacidad.text())
         Ubicacion = str(self.le_Ubicacion.text())
         HangarR = Conexion()
@@ -47,8 +50,9 @@ class HangarRegister(QWidget):
             self.le_idHangar.clear()
             self.le_Capacidad.clear()
             self.le_Ubicacion.clear()
+            Dialog2("Hangar registrado \n correctamente")
         else:
-            print("datos no validos")
+            Dialog("Los datos no \n son validos")
         HangarR.cerrar_conexion()
         self.cargarTable()
     
@@ -56,11 +60,12 @@ class HangarRegister(QWidget):
         idDel = self.tb_hangares.selectedIndexes()[0].data()
         status = self.statusHangar(idDel)
         if status == False:
-            print("no se puede eliminar este hangar")
+            Dialog("no se puede eliminar \n este hangar")
         else:
             delU = Conexion()
             delU.insertarDatos("DELETE FROM Hangares WHERE idHangar = '%s'" %(idDel))
             delU.cerrar_conexion
+            Dialog2("El hangar ha sido \n eliminado")
         self.cargarTable()
     
     def statusHangar(self, idHangar):
@@ -72,4 +77,16 @@ class HangarRegister(QWidget):
             return True
         else:
             return False 
+    
+    def validacion(self):
+        count = 0
+        if not self.le_idHangar.text().strip():
+            count += 1
+        if not self.le_Capacidad.text().strip():
+            count += 1
+        if not self.le_Ubicacion.text().strip():
+            count += 1
+        if count == 0:
+            return True
+        return False
         

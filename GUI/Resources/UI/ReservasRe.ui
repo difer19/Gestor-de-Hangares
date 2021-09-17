@@ -167,8 +167,14 @@ QTableWidget
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QLineEdit" name="lineEdit_2">
+           <property name="inputMask">
+            <string/>
+           </property>
            <property name="text">
             <string>Dia</string>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
            </property>
           </widget>
          </item>

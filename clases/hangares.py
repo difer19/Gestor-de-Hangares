@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import QPushButton, QWidget, QStackedWidget
 from PyQt5 import uic
-from PyQt5.uic.uiparser import QtWidgets
 from clases.hangarRegister import HangarRegister
 
 

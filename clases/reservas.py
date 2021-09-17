@@ -1,7 +1,6 @@
 from clases.reservarh1 import ReservarHangar1
 from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
-from PyQt5.uic.uiparser import QtWidgets
 
 
 class Reservas(QWidget):

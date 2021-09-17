@@ -1,3 +1,4 @@
+from clases.dialog import Dialog, Dialog2
 from PyQt5.QtWidgets import QComboBox, QLineEdit, QPushButton, QTableWidget, QTableWidgetItem, QWidget
 from PyQt5 import uic
 from database.conexion import Conexion 
@@ -52,6 +53,9 @@ class UserRegister(QWidget):
         aerolineas.cerrar_conexion()
 
     def RegistrarUser(self):
+        if self.validarCamposVacios() == False:
+            Dialog("Campos Vacios")
+            return False
         self.cargarCB()
         userName = self.le_username.text()
         name = self.le_name.text().lower()
@@ -69,8 +73,9 @@ class UserRegister(QWidget):
             self.le_name.clear()
             self.le_password.clear()
             self.le_password2.clear()
+            Dialog2("El usuario fue registrado")
         else:
-            print("campos no coinciden o nombre de usuario ya esta en uso")
+            Dialog("campos no coinciden \n o el nombre de usuario \n ya esta en uso")
         Conect.cerrar_conexion()
         self.cargarTable()
 
@@ -80,3 +85,19 @@ class UserRegister(QWidget):
         delU.insertarDatos("DELETE FROM users WHERE idusers = '%s'" %(idDel))
         self.cargarTable()
         delU.cerrar_conexion()
+        Dialog2("El usuario fue eliminado")
+    
+    def validarCamposVacios(self):
+        count = 0
+        if not self.le_username.text().strip():
+            count += 1
+        if not self.le_name.text().strip():
+            count += 1
+        if not self.le_password.text().strip():
+            count += 1
+        if not self.le_password2.text().strip():
+            count += 1
+        if count == 0:
+            return True
+        return False
+

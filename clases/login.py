@@ -45,7 +45,6 @@ class PantallaLogin(QMainWindow):
         result = LoginC.numberResult(query)
         if result == 0:
             self.Login1.lb_alert.setText("Datos Invalidos")
-            print("incorrecto")
         else:
             query2 = "SELECT afiliacion FROM users WHERE username = '%s' and password = '%s'" %(userName, Password)
             afiliacion = LoginC.ejecutar_SQL(query2)
@@ -54,7 +53,6 @@ class PantallaLogin(QMainWindow):
                 afiliacion = af
             self.User = Usuario(userName, afiliacion, Password)
             self.status = True
-            print("correcto")
             self.close()
         LoginC.cerrar_conexion()
 

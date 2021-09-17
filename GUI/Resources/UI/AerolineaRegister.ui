@@ -149,7 +149,7 @@ QTableWidget
          </size>
         </property>
         <property name="text">
-         <string>Registrar Usuario</string>
+         <string>Registrar Aerolinea</string>
         </property>
        </widget>
       </item>

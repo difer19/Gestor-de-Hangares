@@ -6,7 +6,6 @@ from clases.usuarios import Usuarios
 from clases.reservarh2 import ReservarHangar2
 
 
-
 class PantallaAdministrador(QMainWindow):
     def __init__(self):
         super().__init__()

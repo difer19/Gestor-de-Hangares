@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QLineEdit, QPushButton, QTableWidget, QWidget, QTableWidgetItem
 from PyQt5 import uic
 from database.conexion import Conexion
+from clases.dialog import *
 
 
 class AerolineaRegister(QWidget):
@@ -34,7 +35,10 @@ class AerolineaRegister(QWidget):
         aeroCon.cerrar_conexion()
 
     def RegistrarAerolinea(self):
-        nombre = self.le_nombreAerolinea.text().lower()
+        if not self.le_nombreAerolinea.text().strip():
+            Dialog("Campo Vacio")
+            return False
+        nombre = self.le_nombreAerolinea.text().strip().lower()
         Register = Conexion()
         Id = Register.numberResult("SELECT * FROM "+"Aerolineas") + 1
         query = "SELECT * FROM Aerolineas WHERE NombreAerolinea = '%s'" %(nombre)
@@ -42,13 +46,14 @@ class AerolineaRegister(QWidget):
             insert = "INSERT INTO Aerolineas (idAerolineas, NombreAerolinea) VALUES ('%s','%s');" %(Id, nombre)
             Register.insertarDatos(insert)
             self.le_nombreAerolinea.clear()
+            Dialog2("La aerolinea se \n ingreso exitosamente")
         else:
-            print("Aerolinea ya esta en la bd")
+            Dialog("Esta aerolinea ya esta \n en la base de datos")
         Register.cerrar_conexion()
         self.cargarTable()
     
     def EliminarAerolinea(self):
-        # Eliminar una aerolinea conlleva eliminar todos sus usuarios y aviones asociados
+        # Eliminar una aerolinea conlleva eliminar todos sus usuarios, aviones asociados
         idDel = self.tb_aerolineas.selectedIndexes()[0].data()
         nameDel = self.tb_aerolineas.selectedIndexes()[1].data()
         delA = Conexion()
@@ -57,6 +62,8 @@ class AerolineaRegister(QWidget):
         delA.insertarDatos("DELETE FROM Aviones WHERE IdAerolineas = '%s'" %(idDel))
         delA.cerrar_conexion()
         self.cargarTable()
+        Dialog2("La aerolinea se \n elimino correctamente")
+
         
 
 

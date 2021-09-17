@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QLineEdit, QPushButton, QTableWidget, QTableWidgetIt
 from PyQt5 import uic
 from database.conexion import Conexion 
 from datetime import *
+from clases.dialog import *
 
 
 class ReservarHangar1(QWidget):
@@ -31,18 +32,20 @@ class ReservarHangar1(QWidget):
 
     
     def reservarHa(self):
+        if self.validacion() == False:
+            Dialog("Campos Vacios")
+            return False
         strIni = self.le_dayIn.text()+"/"+self.le_MesIn.text()+"/"+self.le_yearIn.text()
         strFin = self.le_dayFin.text()+"/"+self.le_MesFin.text()+"/"+self.le_yearFin.text()
         self.fechaInicial = datetime.strptime(strIni, '%d/%m/%Y')
         self.fechaFinal = datetime.strptime(strFin, '%d/%m/%Y')
         if self.fechaFinal > self.fechaInicial and self.fechaFinal > datetime.today() and self.fechaInicial > datetime.today():
-            print("intervalo correcto")
             self.idAvion =  self.tb_aviones.selectedIndexes()[0].data()
             Area =  self.tb_aviones.selectedIndexes()[2].data()
             self.idHangar =  self.tb_hangares.selectedIndexes()[0].data()
             Capacidad =  self.tb_hangares.selectedIndexes()[1].data()
             if int(Capacidad) < int(Area):
-                print("El hangar no es adecuado para ese avion")
+                Dialog("El hangar no es \n adecuado para ese avion")
             elif self.disponibilidadH() == True:
                 reservar = Conexion()
                 idReserva = reservar.numberResult("SELECT idReservas FROM Reservas") + 1
@@ -59,10 +62,11 @@ class ReservarHangar1(QWidget):
                 self.le_dayFin.clear()
                 self.le_MesFin.clear()
                 self.le_yearFin.clear()
+                Dialog2("La reserva ha \n sido registrada")
             else:
-                print("No se puede hacer la reserva")
+                Dialog("No se puede hacer \n la reserva")
         else:
-            print("fechas invalidas")
+            Dialog("fechas invalidas")
         
 
     
@@ -114,6 +118,23 @@ class ReservarHangar1(QWidget):
             self.tb_hangares.setItem(i, 0, QTableWidgetItem(hangar[0]))
             self.tb_hangares.setItem(i, 1, QTableWidgetItem(str(hangar[1])))
             self.tb_hangares.setItem(i, 2, QTableWidgetItem(hangar[2]))
-            self.tb_hangares.setItem(i, 3, QTableWidgetItem(hangar[3]))
             i += 1
         hangarCon.cerrar_conexion()
+    
+    def validacion(self):
+        count = 0
+        if not self.le_dayIn.text().strip():
+            count += 1
+        if not self.le_MesIn.text().strip():
+            count += 1
+        if not self.le_yearIn.text().strip():
+            count += 1
+        if not self.le_dayFin.text().strip():
+            count += 1
+        if not self.le_MesFin.text().strip():
+            count += 1
+        if not self.le_yearFin.text().strip():
+            count += 1
+        if count == 0:
+            return True
+        return False

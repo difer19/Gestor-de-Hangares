@@ -64,3 +64,4 @@ class FunAerolinea(QMainWindow):
         self.btn_pagos.setEnabled(True)
         self.btn_aviones.setEnabled(False) 
         self.main.setCurrentIndex(3)
+        

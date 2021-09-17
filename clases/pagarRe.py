@@ -1,7 +1,8 @@
-from PyQt5.QtWidgets import QComboBox, QLineEdit, QPushButton, QTableWidget, QTableWidgetItem, QWidget
+from PyQt5.QtWidgets import QPushButton, QTableWidget, QTableWidgetItem, QWidget
 from PyQt5 import uic
 from database.conexion import Conexion
 from datetime import *
+from clases.dialog import Dialog2
 
 
 class PagarRe(QWidget):
@@ -51,3 +52,4 @@ class PagarRe(QWidget):
         pagar.insertarDatos(query)
         pagar.cerrar_conexion()
         self.cargarTable()
+        Dialog2("El pago ha sido registrado")

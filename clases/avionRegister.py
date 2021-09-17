@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QComboBox, QLineEdit, QPushButton, QTableWidget, QTextEdit, QWidget, QTableWidgetItem
 from PyQt5 import uic
 from database.conexion import Conexion
+from clases.dialog import *
 
 
 class AvionRegister(QWidget):
@@ -57,6 +58,9 @@ class AvionRegister(QWidget):
         self.cb_tipoPr.addItem("Reaccion")
 
     def AvionRegM(self):
+        if self.validacion() == False:
+            Dialog("Campos Vacios")
+            return False
         Id = self.le_id.text()
         modelo = self.le_modelo.text()
         peso =  self.le_peso.text()
@@ -83,8 +87,9 @@ class AvionRegister(QWidget):
             self.le_numMot.clear()
             self.le_area.clear()
             self.tx_descripcion.setText("")
+            Dialog2("El avion se registro \n correctamente")
         else:
-            print("ID ya esta en uso")
+            Dialog("El id ya esta en uso")
         AvionR.cerrar_conexion()
         self.cargarTable()
     
@@ -94,10 +99,29 @@ class AvionRegister(QWidget):
         status = delA.numberResult("SELECT * FROM Reservas WHERE idAvion = '%s'" %(idDel))
         if status == 0:
             delA.insertarDatos("DELETE FROM Aviones WHERE idAvion = '%s'" %(idDel))
+            Dialog2("El avion se elimino \n correctamente")
         else:
-            print("no se puede eliminar este avion")
+            Dialog("no se puede eliminar \n este avion")
         delA.cerrar_conexion
         self.cargarTable()
+    
+    def validacion(self):
+        count = 0
+        if not self.le_id.text().strip():
+            count += 1
+        if not self.le_modelo.text().strip():
+            count += 1
+        if not self.le_peso.text().strip():
+            count += 1
+        if not self.le_Capacidad.text().strip():
+            count += 1
+        if not self.le_numMot.text().strip():
+            count += 1
+        if not self.le_area.text().strip():
+            count += 1
+        if count == 0:
+            return True
+        return False
 
         
         

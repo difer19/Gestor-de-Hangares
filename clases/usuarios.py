@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QComboBox, QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
 from clases.userRegister import UserRegister 
-from PyQt5.uic.uiparser import QtWidgets
 
 
 class Usuarios(QWidget):
