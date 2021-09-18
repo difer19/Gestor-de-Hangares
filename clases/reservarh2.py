@@ -3,6 +3,7 @@ from PyQt5 import uic
 from database.conexion import Conexion 
 from datetime import *
 from clases.dialog import *
+from PyQt5.QtGui import QIntValidator
 
 
 class ReservarHangar2(QWidget):
@@ -25,6 +26,13 @@ class ReservarHangar2(QWidget):
         self.le_yearFin = self.findChild(QLineEdit, 'lineEdit_5')
         self.btn_reservar = self.findChild(QPushButton, 'pushButton')
 
+        self.le_dayIn.setValidator(QIntValidator())
+        self.le_MesIn.setValidator(QIntValidator())
+        self.le_yearIn.setValidator(QIntValidator())
+        self.le_dayFin.setValidator(QIntValidator())
+        self.le_MesFin.setValidator(QIntValidator())
+        self.le_yearFin.setValidator(QIntValidator())
+        
         self.cargarCB()
         self.cargarTable_hangares()
         self.cargarTable_aviones()
@@ -52,7 +60,7 @@ class ReservarHangar2(QWidget):
                 idReserva = reservar.numberResult("SELECT idReservas FROM Reservas") + 1
                 reserva = "INSERT INTO Reservas (idReservas, fecha_inicial, fecha_final, idAvion, idhangar) VALUES ('%s','%s','%s','%s','%s')" %(idReserva, strIni, strFin, self.idAvion, self.idHangar)
                 delta = self.fechaFinal - self.fechaInicial
-                valor_factura = int(Capacidad)*50000 + (delta.days)*80000
+                valor_factura = int(Capacidad)*20000*(delta.days)
                 factura  = "INSERT INTO Facturas (idFacturas, Valor, fecha_pago, idReserva, Estado) VALUES ('%s','%s','%s','%s','%s');" %(idReserva, valor_factura, "Null", idReserva, "No Pagado")
                 reservar.insertarDatos(reserva)
                 reservar.insertarDatos(factura)

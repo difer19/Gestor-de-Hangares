@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QLineEdit, QPushButton, QTableWidget, QWidget, QTabl
 from PyQt5 import uic
 from database.conexion import Conexion
 from clases.dialog import *
+from PyQt5.QtGui import QIntValidator
 
 class HangarRegister(QWidget):
     def __init__(self, parent = None):
@@ -17,6 +18,8 @@ class HangarRegister(QWidget):
         self.btn_HangarR = self.findChild(QPushButton, 'pushButton')
         self.tb_hangares = self.findChild(QTableWidget, 'tableWidget')
         self.btn_delHangar = self.findChild(QPushButton, 'pushButton_2')
+        self.le_Capacidad.setValidator(QIntValidator())
+        
         self.cargarTable()
 
         self.btn_HangarR.clicked.connect(lambda: self.RegistrarHangar())

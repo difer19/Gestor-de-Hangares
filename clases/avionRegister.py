@@ -1,3 +1,4 @@
+from PyQt5.QtGui import QIntValidator
 from PyQt5.QtWidgets import QComboBox, QLineEdit, QPushButton, QTableWidget, QTextEdit, QWidget, QTableWidgetItem
 from PyQt5 import uic
 from database.conexion import Conexion
@@ -25,6 +26,10 @@ class AvionRegister(QWidget):
         self.btn_AvionReg = self.findChild(QPushButton, 'pushButton')
         self.tb_aviones = self.findChild(QTableWidget, 'tableWidget')
         self.btn_AvionDel = self.findChild(QPushButton, 'pushButton_2')
+        self.le_peso.setValidator(QIntValidator())
+        self.le_Capacidad.setValidator(QIntValidator())
+        self.le_numMot.setValidator(QIntValidator())
+        self.le_area.setValidator(QIntValidator())
 
         self.cargarTable()
         self.CBUpdate()
