@@ -45,6 +45,8 @@ class PagarRe(QWidget):
         ResCon.cerrar_conexion()
 
     def pagarH(self):
+        if self.tb_facturas.selectedIndexes() == []:
+            return False
         idFactura = self.tb_facturas.selectedIndexes()[0].data()
         today = datetime.today().strftime('%d-%m-%Y')
         pagar = Conexion()
@@ -52,4 +54,4 @@ class PagarRe(QWidget):
         pagar.insertarDatos(query)
         pagar.cerrar_conexion()
         self.cargarTable()
-        Dialog2("El pago ha sido registrado")
+        Dialog2("El pago se efectuo \n correctamente")

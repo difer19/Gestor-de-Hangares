@@ -92,19 +92,21 @@ class AvionRegister(QWidget):
             self.le_numMot.clear()
             self.le_area.clear()
             self.tx_descripcion.setText("")
-            Dialog2("El avion se registro \n correctamente")
+            Dialog2("El avion ha sido \n ingresado correctamente")
         else:
             Dialog("El id ya esta en uso")
         AvionR.cerrar_conexion()
         self.cargarTable()
     
     def AvionDelM(self):
+        if self.tb_aviones.selectedIndexes() == []:
+            return False
         idDel = self.tb_aviones.selectedIndexes()[0].data()
         delA = Conexion()
         status = delA.numberResult("SELECT * FROM Reservas WHERE idAvion = '%s'" %(idDel))
         if status == 0:
             delA.insertarDatos("DELETE FROM Aviones WHERE idAvion = '%s'" %(idDel))
-            Dialog2("El avion se elimino \n correctamente")
+            Dialog2("El avion ha sido eliminado")
         else:
             Dialog("no se puede eliminar \n este avion")
         delA.cerrar_conexion

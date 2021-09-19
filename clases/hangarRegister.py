@@ -60,6 +60,8 @@ class HangarRegister(QWidget):
         self.cargarTable()
     
     def EliminarHangar(self):
+        if self.tb_hangares.selectedIndexes() == []:
+            return False
         idDel = self.tb_hangares.selectedIndexes()[0].data()
         status = self.statusHangar(idDel)
         if status == False:

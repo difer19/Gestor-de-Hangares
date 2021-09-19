@@ -80,6 +80,8 @@ class UserRegister(QWidget):
         self.cargarTable()
 
     def DeleteUser(self):
+        if self.tb_users.selectedIndexes() == []:
+            return False
         idDel = self.tb_users.selectedIndexes()[0].data()
         delU = Conexion()
         delU.insertarDatos("DELETE FROM users WHERE idusers = '%s'" %(idDel))

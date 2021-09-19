@@ -41,8 +41,10 @@ class ReservarHangar2(QWidget):
         self.btn_reservar.clicked.connect(lambda: self.reservarHa())
 
     def reservarHa(self):
+        if self.tb_aviones.selectedIndexes() == [] and self.tb_hangares.selectedIndexes() == []:
+            return False
         if self.validacion() == False:
-            Dialog("Campos Vacios")
+            Dialog("Campos sin fijar")
             return False
         strIni = self.le_dayIn.text()+"/"+self.le_MesIn.text()+"/"+self.le_yearIn.text()
         strFin = self.le_dayFin.text()+"/"+self.le_MesFin.text()+"/"+self.le_yearFin.text()
@@ -71,7 +73,7 @@ class ReservarHangar2(QWidget):
                 self.le_dayFin.clear()
                 self.le_MesFin.clear()
                 self.le_yearFin.clear()
-                Dialog2("La reserva ha \n sido registrada")
+                Dialog2("El hangar fue reservado")
             else:
                 Dialog("No se puede hacer \n la reserva")
         else:

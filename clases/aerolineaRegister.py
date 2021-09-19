@@ -36,7 +36,7 @@ class AerolineaRegister(QWidget):
 
     def RegistrarAerolinea(self):
         if not self.le_nombreAerolinea.text().strip():
-            Dialog("Campo Vacio")
+            Dialog("Campos Vacios")
             return False
         nombre = self.le_nombreAerolinea.text().strip().lower()
         Register = Conexion()
@@ -54,6 +54,8 @@ class AerolineaRegister(QWidget):
     
     def EliminarAerolinea(self):
         # Eliminar una aerolinea conlleva eliminar todos sus usuarios, aviones asociados
+        if self.tb_aerolineas.selectedIndexes() == []:
+            return False
         idDel = self.tb_aerolineas.selectedIndexes()[0].data()
         nameDel = self.tb_aerolineas.selectedIndexes()[1].data()
         delA = Conexion()
@@ -62,7 +64,7 @@ class AerolineaRegister(QWidget):
         delA.insertarDatos("DELETE FROM Aviones WHERE IdAerolineas = '%s'" %(idDel))
         delA.cerrar_conexion()
         self.cargarTable()
-        Dialog2("La aerolinea se \n elimino correctamente")
+        Dialog2("La aerolinea se \n elimino exitosamente")
 
         
 
