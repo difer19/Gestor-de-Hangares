@@ -8,9 +8,10 @@ El aeropuerto el campanero con el fin de optimizar sus procesos en la administra
 •	Debe permitir al funcionario de la aerolínea gestionar los datos de sus aviones
 
 Instrucciones de uso:
+
 Notas
  * Es necesario instalar las librerias PyQT5 y pymysql
- * La base de datos es remota y tiene como host la pagina FreeSqlDatabase 
+ * La base de datos es remota y tiene como host la pagina FreeSqlDatabase por lo que no es necesario instalar ningun sql
 1. Ejecute el archivo main.py
 2. Ingrese con el usuario:
    - UserName : Test1  Passsword: 123456789   Rol: Fun. Aerolinea Arkas
