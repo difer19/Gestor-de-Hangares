@@ -49,6 +49,7 @@ class FunAerolinea(QMainWindow):
         self.btn_pagos.setEnabled(True)
         self.btn_aviones.setEnabled(True)
         self.main.setCurrentIndex(1)
+        self.main.widget(1).reload()
     
     def pagosa(self):
         self.btn_home.setEnabled(True)

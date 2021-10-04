@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
 from clases.avionRegister import AvionRegister
+from clases.dataAvion import AvionData
 
 
 class Aviones(QWidget):
@@ -18,10 +19,11 @@ class Aviones(QWidget):
         self.main = self.findChild(QStackedWidget, 'stackedWidget')
 
         self.avionR = AvionRegister(self.Aerolinea)
-        
+        self.avionD = AvionData(self.Aerolinea)
+
         self.main.addWidget(QWidget())
         self.main.addWidget(self.avionR)
-        self.main.addWidget(QWidget())
+        self.main.addWidget(self.avionD)
         self.main.addWidget(QWidget())
 
         self.btn_RE.clicked.connect(self.REb)

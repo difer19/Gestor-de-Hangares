@@ -28,6 +28,9 @@ class Reservas(QWidget):
         self.btn_Reprogramar.clicked.connect(self.ReprogramarB)
         self.btn_reporte.clicked.connect(self.reporteB)
     
+    def reload(self):
+        self.main.widget(1).cargarTable_aviones()
+    
     def ReservaB(self):
         self.btn_Reserva.setEnabled(False)
         self.btn_Reprogramar.setEnabled(True)
