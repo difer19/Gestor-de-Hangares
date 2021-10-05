@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
 from clases.aerolineaRegister import AerolineaRegister
-
+from clases.dataAerolinea import AerolineaData
 
 class Aerolineas(QWidget):
     def __init__(self, parent = None):
@@ -17,10 +17,11 @@ class Aerolineas(QWidget):
         self.main = self.findChild(QStackedWidget, 'stackedWidget')
 
         self.AeroR = AerolineaRegister()
+        self.AeroD = AerolineaData()
         
         self.main.addWidget(QWidget())
         self.main.addWidget(self.AeroR)
-        self.main.addWidget(QWidget())
+        self.main.addWidget(self.AeroD)
         self.main.addWidget(QWidget())
 
         self.btn_RE.clicked.connect(self.REb)
@@ -33,6 +34,7 @@ class Aerolineas(QWidget):
         self.btn_datos.setEnabled(True)
         self.btn_reporte.setEnabled(True)
         self.main.setCurrentIndex(1)
+        self.main.widget(1).cargarTable()
 
     def datosB(self):
         self.main.currentWidget().destroy()
@@ -40,6 +42,7 @@ class Aerolineas(QWidget):
         self.btn_datos.setEnabled(False)
         self.btn_reporte.setEnabled(True)
         self.main.setCurrentIndex(2)
+        self.main.widget(2).cargarCB()
     
     def reporteB(self):
         self.main.currentWidget().destroy()

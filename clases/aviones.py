@@ -36,6 +36,7 @@ class Aviones(QWidget):
         self.btn_datos.setEnabled(True)
         self.btn_reporte.setEnabled(True)
         self.main.setCurrentIndex(1)
+        self.main.widget(1).cargarTable()
 
     def datosB(self):
         self.main.currentWidget().destroy()
@@ -43,6 +44,7 @@ class Aviones(QWidget):
         self.btn_datos.setEnabled(False)
         self.btn_reporte.setEnabled(True)
         self.main.setCurrentIndex(2)
+        self.main.widget(2).cargarCB()
     
     def reporteB(self):
         self.main.currentWidget().destroy()

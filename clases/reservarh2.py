@@ -111,7 +111,6 @@ class ReservarHangar2(QWidget):
             self.cb_aerolineas.addItem(Aerolinea[0])
         aerolineas.cerrar_conexion()
 
-    
     def cargarTable_aviones(self):
         avionCon = Conexion()
         idA = avionCon.ejecutar_SQL("SELECT idAerolineas FROM Aerolineas WHERE NombreAerolinea = '%s'" %(self.cb_aerolineas.currentText()))
