@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1075</width>
-    <height>584</height>
+    <height>660</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -107,11 +107,53 @@ QTableWidget
        <height>16777215</height>
       </size>
      </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
      <column>
       <property name="text">
        <string>Id Reserva</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>Fecha Inicial</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Fecha Final</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Id Avion</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Id Hangar</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>45</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Cancelar Reserva</string>
+     </property>
     </widget>
    </item>
    <item>
@@ -133,37 +175,8 @@ QTableWidget
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QPushButton" name="pushButton">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>45</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Cancelar Reserva</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QWidget" name="widget_2" native="true">
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
           <widget class="QWidget" name="widget_4" native="true">
            <layout class="QGridLayout" name="gridLayout">
-            <item row="1" column="2">
-             <widget class="QLabel" name="label_5">
-              <property name="text">
-               <string>Año</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLineEdit" name="lineEdit"/>
-            </item>
             <item row="1" column="1">
              <widget class="QLabel" name="label_4">
               <property name="text">
@@ -171,17 +184,26 @@ QTableWidget
               </property>
              </widget>
             </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_2">
+            <item row="6" column="0">
+             <widget class="QLineEdit" name="lineEdit_4"/>
+            </item>
+            <item row="6" column="1">
+             <widget class="QLineEdit" name="lineEdit_5"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLineEdit" name="lineEdit"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_3">
               <property name="text">
-               <string>Fecha Inicial</string>
+               <string>Dia</string>
               </property>
              </widget>
             </item>
-            <item row="4" column="2">
-             <widget class="QLabel" name="label_9">
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_7">
               <property name="text">
-               <string>Año</string>
+               <string>Dia</string>
               </property>
              </widget>
             </item>
@@ -199,34 +221,35 @@ QTableWidget
               </property>
              </widget>
             </item>
-            <item row="6" column="1">
-             <widget class="QLineEdit" name="lineEdit_5"/>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_7">
+            <item row="1" column="2">
+             <widget class="QLabel" name="label_5">
               <property name="text">
-               <string>Dia</string>
+               <string>Año</string>
               </property>
              </widget>
             </item>
-            <item row="2" column="1">
-             <widget class="QLineEdit" name="lineEdit_2"/>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_3">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_2">
               <property name="text">
-               <string>Dia</string>
+               <string>Fecha Inicial</string>
               </property>
              </widget>
             </item>
             <item row="2" column="2">
              <widget class="QLineEdit" name="lineEdit_3"/>
             </item>
-            <item row="6" column="0">
-             <widget class="QLineEdit" name="lineEdit_4"/>
+            <item row="4" column="2">
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>Año</string>
+              </property>
+             </widget>
             </item>
             <item row="6" column="2">
              <widget class="QLineEdit" name="lineEdit_6"/>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLineEdit" name="lineEdit_2"/>
             </item>
            </layout>
           </widget>

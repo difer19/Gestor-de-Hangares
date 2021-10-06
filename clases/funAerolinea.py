@@ -1,14 +1,16 @@
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
+from clases.home import Home
 from clases.reservas import Reservas
 from clases.pagos import Pagos
 from clases.aviones import Aviones
 
 
 class FunAerolinea(QMainWindow):
-    def __init__(self, aerolinea):
+    def __init__(self, aerolinea, username):
         super().__init__()
         self.aerolinea = aerolinea
+        self.username = username
         self.iniciarGui()
 
     def iniciarGui(self):
@@ -21,11 +23,12 @@ class FunAerolinea(QMainWindow):
         self.btn_pagos = self.menu.findChild(QPushButton, 'pagos')
         self.btn_aviones = self.menu.findChild(QPushButton, 'aviones')
         
+        self.homeP = Home(self.username)
         self.ReservasW = Reservas(self.aerolinea)
         self.PagosW = Pagos(self.aerolinea)
         self.AvionesW = Aviones(self.aerolinea)
 
-        self.main.addWidget(QWidget())
+        self.main.addWidget(self.homeP)
         self.main.addWidget(self.ReservasW)
         self.main.addWidget(self.PagosW)
         self.main.addWidget(self.AvionesW)

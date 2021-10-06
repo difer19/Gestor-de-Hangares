@@ -15,14 +15,14 @@ class Launcher:
         app.exec_()
         return self.Login.User
 
-    def iniciarAdministrador(self):
+    def iniciarAdministrador(self, username):
         app = QApplication(sys.argv)
-        self.Administrador = PantallaAdministrador()
+        self.Administrador = PantallaAdministrador(username)
         app.exec_()
 
-    def iniciarFunAerolinea(self, aerolinea):
+    def iniciarFunAerolinea(self, aerolinea, username):
         app = QApplication(sys.argv)
-        self.funAero = FunAerolinea(aerolinea)
+        self.funAero = FunAerolinea(aerolinea, username)
         app.exec_()
 
             

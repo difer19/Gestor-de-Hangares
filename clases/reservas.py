@@ -1,3 +1,4 @@
+from clases.reprReserva import ReprReserva
 from clases.reservarh1 import ReservarHangar1
 from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
@@ -18,10 +19,11 @@ class Reservas(QWidget):
         self.main = self.findChild(QStackedWidget, 'stackedWidget')
 
         self.ReservarW = ReservarHangar1(self.aerolinea)
+        self.Repr = ReprReserva(self.aerolinea)
 
         self.main.addWidget(QWidget())
         self.main.addWidget(self.ReservarW)
-        self.main.addWidget(QWidget())
+        self.main.addWidget(self.Repr)
         self.main.addWidget(QWidget())
         
         self.btn_Reserva.clicked.connect(self.ReservaB)
@@ -42,6 +44,7 @@ class Reservas(QWidget):
         self.btn_Reprogramar.setEnabled(False)
         self.btn_reporte.setEnabled(True)
         self.main.setCurrentIndex(2)
+        self.main.widget(2).cargarTable()
     
     def reporteB(self):
         self.btn_Reserva.setEnabled(True)

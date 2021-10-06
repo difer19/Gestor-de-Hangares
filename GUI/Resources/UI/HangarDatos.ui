@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1050</width>
-    <height>645</height>
+    <width>1170</width>
+    <height>654</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -97,7 +97,7 @@ QTextEdit
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Imagen</string>
+         <string/>
         </property>
        </widget>
       </item>

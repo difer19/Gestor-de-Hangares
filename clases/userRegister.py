@@ -66,7 +66,7 @@ class UserRegister(QWidget):
         query = "SELECT username FROM users WHERE username = '%s'" %(userName)
         result = Conect.numberResult(query)
         if result == 0 and self.passw == self.passw2:
-            idUser = Conect.numberResult("SELECT * FROM users") + 1
+            idUser = Conect.ejecutar_SQL("select max(idusers) FROM users").fetchall()[0][0] + 1
             register = "INSERT INTO users (idusers, username, password, afiliacion, nombre) VALUES ('%s','%s','%s','%s','%s')" %(idUser, userName, self.passw, afiliacion, name )
             Conect.insertarDatos(register)
             self.le_username.clear()

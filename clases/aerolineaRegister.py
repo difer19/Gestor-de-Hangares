@@ -40,7 +40,7 @@ class AerolineaRegister(QWidget):
             return False
         nombre = self.le_nombreAerolinea.text().strip().lower()
         Register = Conexion()
-        Id = Register.numberResult("SELECT * FROM "+"Aerolineas") + 1
+        Id = Register.ejecutar_SQL("select max(idAerolineas) FROM Aerolineas").fetchall()[0][0] + 1
         query = "SELECT * FROM Aerolineas WHERE NombreAerolinea = '%s'" %(nombre)
         if Register.numberResult(query) == 0:
             insert = "INSERT INTO Aerolineas (idAerolineas, NombreAerolinea) VALUES ('%s','%s');" %(Id, nombre)
