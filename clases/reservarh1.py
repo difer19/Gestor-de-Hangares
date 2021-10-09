@@ -59,7 +59,8 @@ class ReservarHangar1(QWidget):
                 Dialog("El hangar no es \n adecuado para ese avion")
             elif self.disponibilidadH() == True:
                 reservar = Conexion()
-                idReserva = reservar.ejecutar_SQL("select max(idReservas) FROM Reservas").fetchall[0][0] + 1
+                idReserva = int(reservar.ejecutar_SQL("select max(idReservas) FROM Reservas").fetchall()[0][0]) + 1
+                print(idReserva)
                 reserva = "INSERT INTO Reservas (idReservas, fecha_inicial, fecha_final, idAvion, idhangar) VALUES ('%s','%s','%s','%s','%s')" %(idReserva, strIni, strFin, self.idAvion, self.idHangar)
                 delta = self.fechaFinal - self.fechaInicial
                 valor_factura = int(Capacidad)*20000*(delta.days)

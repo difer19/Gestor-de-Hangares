@@ -76,6 +76,7 @@ class ReprReserva(QWidget):
         delR.insertarDatos("DELETE FROM Reservas WHERE idReservas = '%s'" %(idRF))
         delR.cerrar_conexion()
         Dialog2("La reserva fue cancelada")
+        self.cargarTable()
 
     def reprogramar(self):
         if self.tb_reservas.selectedIndexes() == []:
