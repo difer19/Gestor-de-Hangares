@@ -118,7 +118,10 @@ QTextEdit
             </size>
            </property>
            <property name="text">
-            <string>Imagen</string>
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>../Images/img-usuarios - fixed size.png</pixmap>
            </property>
           </widget>
          </item>

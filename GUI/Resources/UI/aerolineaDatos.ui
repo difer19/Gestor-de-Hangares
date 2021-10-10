@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1056</width>
+    <width>1091</width>
     <height>609</height>
    </rect>
   </property>
@@ -97,7 +97,10 @@ QTextEdit
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Imagen</string>
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../Images/img-aerolineas - fixed size.png</pixmap>
         </property>
        </widget>
       </item>

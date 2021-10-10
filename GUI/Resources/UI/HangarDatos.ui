@@ -99,6 +99,9 @@ QTextEdit
         <property name="text">
          <string/>
         </property>
+        <property name="pixmap">
+         <pixmap>../Images/img-hangares - fixed size.png</pixmap>
+        </property>
        </widget>
       </item>
       <item>
@@ -182,7 +185,7 @@ QTextEdit
          </size>
         </property>
         <property name="text">
-         <string>Aerolinea</string>
+         <string>Hangar</string>
         </property>
        </widget>
       </item>

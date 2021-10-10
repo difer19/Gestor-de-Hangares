@@ -136,7 +136,7 @@ QTextEdit
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap>../Images/img_aviones.png</pixmap>
+         <pixmap>../Images/img-aviones - fixed size.png</pixmap>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
