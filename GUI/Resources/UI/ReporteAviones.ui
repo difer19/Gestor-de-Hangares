@@ -145,6 +145,11 @@ QTableWidget
      </column>
      <column>
       <property name="text">
+       <string>Descripcion</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
        <string>Area</string>
       </property>
      </column>

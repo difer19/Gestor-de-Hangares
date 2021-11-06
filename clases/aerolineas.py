@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
 from clases.aerolineaRegister import AerolineaRegister
 from clases.dataAerolinea import AerolineaData
+from clases.reporteAerolineas import ReporteAerolineas
 
 class Aerolineas(QWidget):
     def __init__(self, parent = None):
@@ -18,11 +19,12 @@ class Aerolineas(QWidget):
 
         self.AeroR = AerolineaRegister()
         self.AeroD = AerolineaData()
+        self.AeroRep = ReporteAerolineas()
         
         self.main.addWidget(QWidget())
         self.main.addWidget(self.AeroR)
         self.main.addWidget(self.AeroD)
-        self.main.addWidget(QWidget())
+        self.main.addWidget(self.AeroRep)
 
         self.btn_RE.clicked.connect(self.REb)
         self.btn_datos.clicked.connect(self.datosB)

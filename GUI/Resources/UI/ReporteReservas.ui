@@ -120,6 +120,11 @@ QTableWidget
      </column>
      <column>
       <property name="text">
+       <string>Fecha Final</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
        <string>Id Avion</string>
       </property>
      </column>

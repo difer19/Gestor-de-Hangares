@@ -123,6 +123,11 @@ QTableWidget
        <string>Ubicacion</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>Reservas</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>

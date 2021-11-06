@@ -106,6 +106,7 @@ class ReprReserva(QWidget):
                 self.le_MesFin.clear()
                 self.le_yearFin.clear()
                 Dialog2("Reserva Reprogramada")
+                self.cargarTable()
             else:
                 Dialog("Fechas invalidas")
         else:

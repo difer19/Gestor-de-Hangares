@@ -143,17 +143,17 @@ QTableWidget
      </column>
      <column>
       <property name="text">
-       <string>Estado</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
        <string>Fecha del Pago</string>
       </property>
      </column>
      <column>
       <property name="text">
        <string>Id de Reserva Asociada</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Estado</string>
       </property>
      </column>
     </widget>

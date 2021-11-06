@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QPushButton, QStackedWidget, QWidget
 from PyQt5 import uic
 from clases.pagarRe import PagarRe
+from clases.reportePagos import ReportePagos
 
 
 class Pagos(QWidget):
@@ -17,10 +18,11 @@ class Pagos(QWidget):
         self.main = self.findChild(QStackedWidget, 'stackedWidget')
 
         self.PagarW = PagarRe(self.aerolinea)
+        self.PagosRe = ReportePagos(self.aerolinea)
 
         self.main.addWidget(QWidget())
         self.main.addWidget(self.PagarW)
-        self.main.addWidget(QWidget())
+        self.main.addWidget(self.PagosRe)
 
         self.btn_Pago.clicked.connect(self.pagoB)
         self.btn_reporte.clicked.connect(self.reporteB)

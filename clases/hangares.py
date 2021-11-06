@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QPushButton, QWidget, QStackedWidget
 from PyQt5 import uic
 from clases.dataHangar import HangarData
 from clases.hangarRegister import HangarRegister
+from clases.reporteHangares import ReporteHangares
 
 
 class Hangares(QWidget):
@@ -19,11 +20,12 @@ class Hangares(QWidget):
         
         self.HangarR = HangarRegister()
         self.HangarD = HangarData()
+        self.HangarRe = ReporteHangares()
         
         self.main.addWidget(QWidget())
         self.main.addWidget(self.HangarR)
         self.main.addWidget(self.HangarD)
-        self.main.addWidget(QWidget())
+        self.main.addWidget(self.HangarRe)
 
         self.btn_RE.clicked.connect(self.REb)
         self.btn_datos.clicked.connect(self.datosB)

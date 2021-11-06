@@ -99,19 +99,6 @@ QPushButton:disabled
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="DatosUsuario">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Datos</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="ReporteUsuarios">
         <property name="minimumSize">
          <size>
