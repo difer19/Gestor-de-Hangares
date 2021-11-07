@@ -122,7 +122,7 @@ QTableWidget
          </size>
         </property>
         <property name="text">
-         <string>Generar / Actualizar Reporte</string>
+         <string>Generar / Actualizar Reporte 1</string>
         </property>
        </widget>
       </item>
@@ -184,7 +184,7 @@ QTableWidget
          </size>
         </property>
         <property name="text">
-         <string>Generar / Actualizar Reporte</string>
+         <string>Generar / Actualizar Reporte 2</string>
         </property>
        </widget>
       </item>
